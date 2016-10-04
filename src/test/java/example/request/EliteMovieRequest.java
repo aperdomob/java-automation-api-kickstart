@@ -10,13 +10,19 @@ import org.springframework.web.client.RestTemplate;
 import example.dto.MovieDto;
 import example.dto.SeatParameterDto;
 import example.dto.ShowtimeDto;
+import utilities.AppConfig;
+import utilities.BaseRequest;
 
-public class EliteMovieRequest {
+public class EliteMovieRequest extends BaseRequest {
+  
+  public EliteMovieRequest() {
+    AppConfig.getInstance().getUrlBase();
+  }
 
   public MovieDto[] getMovies() {
     RestTemplate restTemplate = new RestTemplate();
     ResponseEntity<MovieDto[]> response = restTemplate.exchange(
-      "http://localhost:8080/rest/movie/",
+      this.concatenateUrl("movie/"),
       HttpMethod.GET,
       null,
       MovieDto[].class);
@@ -24,10 +30,12 @@ public class EliteMovieRequest {
     return response.getBody();
   }
 
-  public ShowtimeDto getShowtime() {
+  public ShowtimeDto getShowtime(int showtime) {
+    String url = this.concatenateUrl(String.format("showtime/%d", showtime));
+    
     RestTemplate restTemplate = new RestTemplate();
     ResponseEntity<ShowtimeDto> response = restTemplate.exchange(
-      "http://localhost:8080/rest/showtime/3",
+      url,
       HttpMethod.GET,
       null,
       ShowtimeDto.class);
@@ -35,7 +43,9 @@ public class EliteMovieRequest {
     return response.getBody();
   }
 
-  public int reserve(SeatParameterDto[] seats) {
+  public int reserve(int showtime, SeatParameterDto[] seats) {
+    String url = this.concatenateUrl(String.format("transaction/%d", showtime));
+
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.APPLICATION_JSON);
     HttpEntity<SeatParameterDto[]> entity = new HttpEntity<SeatParameterDto[]>(seats, headers);
@@ -43,7 +53,7 @@ public class EliteMovieRequest {
     RestTemplate restTemplate = new RestTemplate();
     
     ResponseEntity<Integer> response = restTemplate.exchange(
-      "http://localhost:8080/rest/transaction/3",
+      url,
       HttpMethod.POST,
       entity,
       Integer.class
@@ -55,7 +65,7 @@ public class EliteMovieRequest {
   public void clean() {
     RestTemplate restTemplate = new RestTemplate();
     restTemplate.exchange(
-      "http://localhost:8080/rest/clean/",
+      this.concatenateUrl("clean/"),
       HttpMethod.GET,
       null,
       Void.class);
