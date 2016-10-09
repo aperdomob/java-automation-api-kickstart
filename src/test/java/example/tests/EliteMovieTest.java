@@ -71,7 +71,7 @@ public class EliteMovieTest {
   }
 
   private List<SeatParameterDto> getBookedSeats(SeatDto[][] seats) {
-    List<SeatParameterDto> bookedSeats = new ArrayList<>();
+    List<SeatParameterDto> bookedSeats = new ArrayList<SeatParameterDto>();
     
     Arrays.stream(seats).forEach(block -> bookedSeats.addAll(
       Arrays
