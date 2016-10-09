@@ -2,10 +2,9 @@ package utilities;
 
 import java.io.File;
 
-import org.apache.commons.configuration.CompositeConfiguration;
-import org.apache.commons.configuration.ConfigurationException;
-import org.apache.commons.configuration.PropertiesConfiguration;
-import org.apache.commons.configuration.SystemConfiguration;
+import org.apache.commons.configuration2.Configuration;
+import org.apache.commons.configuration2.builder.fluent.Configurations;
+import org.apache.commons.configuration2.ex.ConfigurationException;
 
 public class AppConfig {
   private static final Object lock = new Object();
@@ -34,11 +33,10 @@ public class AppConfig {
   }
   
   private void loadConfig() {
+    Configurations configs = new Configurations();
+    
     try {
-      CompositeConfiguration config = new CompositeConfiguration();
-      config.addConfiguration(new SystemConfiguration());
-        config.addConfiguration(new PropertiesConfiguration("config" + File.separator + "qa.properties"));
-
+      Configuration config = configs.properties(new File("config" + File.separator + "qa.properties"));
       this.urlBase = config.getString("urlBase");
     } catch (ConfigurationException e) {
       e.printStackTrace();
