@@ -9,17 +9,18 @@ Scenario: Display the films
         | Donde se esconde el diablo             |
         | Primicia Mortal                        |
         | Relatos Salvajes                       |
-        | Éxodo, Dioses y Reyes                  |
+        | Éxodo, Dioses y Reyes                 |
         | Pancho, el perro millonario            |
-        | Petecuy, la película                   |
+        | Petecuy, la película                  |
         | Stockholm                              |
         | Los Juegos del Hambre: Sinsajo Parte 1 |
 
 Scenario: Reserve seats
-	Given the showtime <showtime>
+	Given the showtime 3
 	And the seats:
-		|row|colomn|
+		|row|column|
 		| 0 | 8    |
 		| 0 | 0	   |
 	When reserve the seats
+	And obtain the showtime
 	Then the seats should be booked

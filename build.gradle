@@ -32,4 +32,6 @@ dependencies {
     testCompile 'org.apache.commons:commons-configuration2:2.1'
     testCompile 'info.cukes:cucumber-java8:1.2.2'
     testCompile 'info.cukes:cucumber-junit:1.2.5'
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
+
 }
