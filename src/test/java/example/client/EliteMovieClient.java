@@ -21,8 +21,8 @@ public class EliteMovieClient {
     return this.request.reserve(3, seats);
   }
   
-  public ShowtimeDto getShowtime() {
-    return this.request.getShowtime(3);
+  public ShowtimeDto getShowtime(int showtime) {
+    return this.request.getShowtime(showtime);
   }
 
   public void clean() {

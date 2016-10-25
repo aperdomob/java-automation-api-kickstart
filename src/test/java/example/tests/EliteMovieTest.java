@@ -64,7 +64,7 @@ public class EliteMovieTest {
     
     this.client.reserve(seats);
     
-    ShowtimeDto showtime = this.client.getShowtime();
+    ShowtimeDto showtime = this.client.getShowtime(3);
     List<SeatParameterDto> bookedSeats = getBookedSeats(showtime.getSeats());
     
     assertThat(bookedSeats, hasItems(seats));
