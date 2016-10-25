@@ -19,7 +19,7 @@ import example.dto.SeatDto;
 import example.dto.SeatParameterDto;
 import example.dto.ShowtimeDto;
 
-public class EliteMovieTest {
+public class EliteMovieTestOld {
 
  private EliteMovieClient client;
   
