@@ -7,7 +7,7 @@ public class ShowtimeDto {
   private long timeInMilliseconds;
 
   public ShowtimeDto() {
-    
+
   }
 
   public ShowtimeDto(int id, SeatDto[][] seats, int movieId, int timeInMilliseconds) {
