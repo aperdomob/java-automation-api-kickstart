@@ -18,7 +18,7 @@ public class SeatDto {
     this.booked = booked;
     this.preferencePoints = preferencePoints;
   }
-  
+
   public int getRow() {
     return row;
   }

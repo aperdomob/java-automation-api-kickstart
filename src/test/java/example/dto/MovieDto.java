@@ -6,11 +6,11 @@ public class MovieDto {
   private Object genre;
   private String releaseDateString;
   private String description;
-  
+
   public MovieDto() {
-    
+
   }
-  
+
   public MovieDto(int id, String name, Object genre, String releaseDateString, String description) {
     this.id = id;
     this.name = name;

@@ -39,13 +39,11 @@ public class SeatParameterDto {
       return false;
     }
 
-
     SeatParameterDto other = (SeatParameterDto) obj;
 
-    return this.getRow() == other.getRow() &&
-      this.getColumn() == other.getColumn();
+    return this.getRow() == other.getRow() && this.getColumn() == other.getColumn();
   }
-  
+
   @Override
   public String toString() {
     return this.getRow() + ", " + this.getColumn();

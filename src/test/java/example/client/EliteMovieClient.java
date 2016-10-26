@@ -20,7 +20,7 @@ public class EliteMovieClient {
   public int reserve(SeatParameterDto[] seats) {
     return this.request.reserve(3, seats);
   }
-  
+
   public ShowtimeDto getShowtime(int showtime) {
     return this.request.getShowtime(showtime);
   }
