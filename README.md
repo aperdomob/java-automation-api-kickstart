@@ -1,5 +1,5 @@
 # java-automation-api-kickstart
 Proyecto base para pruebas de API
 
-## Ejecució
-Para ejecutar las pruebas ´´gradlew cucumber´´´´
+## Ejecución
+Para ejecutar las pruebas desde consola ``gradlew cucumber``
