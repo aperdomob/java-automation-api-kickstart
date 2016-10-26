@@ -12,7 +12,7 @@ import utilities.BaseRequest;
 import utilities.Request;
 
 public class EliteMovieRequest extends BaseRequest {
-  
+
   public MovieDto[] getMovies() {
     return Request.exchange(
       this.concatenateUrl("movie/"),
